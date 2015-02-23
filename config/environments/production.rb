@@ -79,7 +79,7 @@ Rails.application.configure do
 
   # required for heroku
   # not to set this to actual host
-  config.action_mailer.default_url_options = { :host => 'victors-pinteresting-app.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'https://victors-pinteresting-app.herokuapp.com' }
 
   # sets paperclip to upload images to amazon S3
   config.paperclip_defaults = {
@@ -90,5 +90,10 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  # tests to help fix heroku content issue from stack overflow
+  config.serve_static_assets = true
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+  config.assets.compile = true
 
 end
