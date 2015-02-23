@@ -25,5 +25,8 @@ module Pinteresting
 
     # required for heroku
     config.assets.initialize_on_precompile = false
+    
+    # attempt to debug heroku content upload
+    config.serve_static_assets = true
   end
 end
